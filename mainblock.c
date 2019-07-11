@@ -1,6 +1,4 @@
-#include <mlx.h>
-
-#define PIXEL mlx_pixel_put (mlx, win, right, down, 0x0ffffff)
+#include "fdf.h"
 
 int	main()
 {
