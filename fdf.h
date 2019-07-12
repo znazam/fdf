@@ -6,7 +6,7 @@
 /*   By: znazam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/11 10:02:04 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/12 07:37:12 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ typedef struct	s_env
 	float map[3][3];
 }				t_env;
 
+typedef struct size
+{
+	float x;
+	float y;
+	float z;
+}				size;
 #endif
