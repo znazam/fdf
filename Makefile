@@ -6,7 +6,7 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/07/12 09:25:35 by znazam           ###   ########.fr        #
+#    Updated: 2019/07/15 09:21:24 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,4 +47,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: LIBFT re fclean clean GNL all
+updateSubmodules:
+	git submodule foreach git pull origin master
+	make fclean
+	git add .
+	git commit -m "submodule update"
+	git push
+
+.PHONY: LIBFT re fclean clean GNL all updateSubmodules
