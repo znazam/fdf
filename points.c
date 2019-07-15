@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   points.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
+/*   Updated: 2019/07/15 08:30:40 by znazam           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mlx.h>
 #include <stdlib.h>
 # define PIXEL mlx_pixel_put(mlx, win, x, y, 0x0ffffff)
@@ -111,18 +123,7 @@ int fun(void *data)
 
 int exitfun(void *data)
 {
+    (void)data;
     exit(0);
     return 0;
-}
-
-int main()
-{
-    t_env env;
-    env.mlx_ptr = mlx_init();
-    env.win_ptr = mlx_new_window(env.mlx_ptr, 500, 500, "test");
-
-    mlx_loop_hook(env.mlx_ptr, fun, &env);
-    mlx_hook(env.win_ptr, 17, 0L, exitfun, &env);
-    mlx_loop(env.mlx_ptr);
-    return (0);
 }

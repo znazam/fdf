@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znazam <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:32:23 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/11 10:00:56 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/12 09:08:32 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int my_key_funct(int keycode)
     return (0);
 }
 
-int    exit_button(void)
+int    exitb(void)
 {
     exit(1);
     return (0);

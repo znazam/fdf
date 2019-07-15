@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znazam <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/12 07:37:12 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/12 09:23:53 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FDF_H
+# define FDF_H
 
 # include "libft/libft.h"
-# include "GNL/get_next_line.c"
+# include "GNL/get_next_line.h"
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -27,17 +27,26 @@ typedef struct	s_pixel
 	int y;
 }				t_pixel;
 
-typedef struct	s_env
-{
-	void *mlx_ptr;
-	void *win_ptr;
-	float map[3][3];
-}				t_env;
-
-typedef struct size
+typedef struct s_coord
 {
 	float x;
 	float y;
 	float z;
-}				size;
+}				t_coord;
+
+typedef struct	s_env
+{
+	void *mlx_ptr;
+	void *win_ptr;
+	t_coord *map;
+	int sizex;
+	int sizey;
+	int sizet;
+
+}				t_env;
+
+int		grid(t_env *env, const char *filename);
+int		fun(void *data);
+int		exitfun(void *data);
+int		exitb(int button);
 #endif

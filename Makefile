@@ -3,18 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: znazam <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/07/10 13:40:22 by znazam           ###   ########.fr        #
+#    Updated: 2019/07/12 09:25:35 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c
+SRC = main.c grid.c points.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
 NAME = fdf
+
+HEADERS = fdf.h
 
 FLAGS = -Wextra -Werror -Wall -I libft -I GNL -I .
 
@@ -33,7 +35,7 @@ GNL:
 	git submodule update GNL
 	gcc -c $(FLAGS) GNL/get_next_line.c -o GNL/get_next_line.o
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	gcc -c $(FLAGS) -o $@ $<
 
 clean:
