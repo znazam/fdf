@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 11:17:24 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/15 15:43:20 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void draw_line(t_env *env, t_pixel a, t_pixel b)
 
     gradient = (double)dy / (double)dx;
     if (gradient > 1)
-        draw_line_y(env, a, b);
+           draw_line_y(env, a, b);
     y = 0;
     x = 0;
     while (x < ABS(dx))

@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 11:20:15 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/15 15:43:20 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		grid(t_env *env, const char *filename)
 		split->content = ft_strsplit(line, ' ');
 		ft_lstadd(&head, split);
 		env->sizex = 0;
-		while (((char**)split->content)[env->sizex])
+		while(((char**)split->content)[env->sizex])
 		{
 			env->sizex++;
 			env->sizet++;
@@ -54,6 +54,7 @@ int		grid(t_env *env, const char *filename)
 		j++;
 		cur = cur->next;
 	}
+	//ft_lstdel(head->content, split->content);
 	return(0);
 }
 
