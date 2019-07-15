@@ -6,7 +6,7 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/07/15 09:21:24 by znazam           ###   ########.fr        #
+#    Updated: 2019/07/15 09:30:59 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,9 @@ fclean: clean
 re: fclean all
 
 updateSubmodules:
-	git submodule foreach git pull origin master
 	make fclean
+	git submodule foreach git checkout master
+	git submodule foreach git pull origin master
 	git add .
 	git commit -m "submodule update"
 	git push
