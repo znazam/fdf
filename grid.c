@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 10:26:02 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/15 11:20:15 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int		grid(t_env *env, const char *filename)
 	{
 		split = ft_lstnew(NULL, 0);
 		split->content = ft_strsplit(line, ' ');
-		printf("Hello\n");
 		ft_lstadd(&head, split);
-		printf("Bye\n");
 		env->sizex = 0;
 		while (((char**)split->content)[env->sizex])
 		{
@@ -40,14 +38,20 @@ int		grid(t_env *env, const char *filename)
 		}
 		env->sizey++;
 	}
-	env->map = ft_memalloc(sizeof(t_coord) * env->sizet);
+	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	t_list *cur;
 	cur = head;
+	int j = 0;
 	while (cur)
 	{
 		int i = -1;
-		while(((char**)split->content)[++i])
-			printf("%i: %s\n", i, ((char**)split->content)[i]);
+		while(((char**)cur->content)[++i])
+		{
+			env->map[j * env->sizex + i].x = i - (env->sizex - 1) * 0.5;
+			env->map[j * env->sizex + i].y = j - (env->sizey - 1) * 0.5;
+			env->map[j * env->sizex + i].z = ft_atoi(((char**)cur->content)[i]);
+		}
+		j++;
 		cur = cur->next;
 	}
 	return(0);

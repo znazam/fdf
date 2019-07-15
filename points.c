@@ -6,26 +6,14 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 08:30:40 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/15 11:17:24 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include "fdf.h"
 #include <stdlib.h>
-# define PIXEL mlx_pixel_put(mlx, win, x, y, 0x0ffffff)
 # define ABS(X) (X < 0 ? -X : X) 
-
-typedef struct  s_pixel
-{
-    int x;
-    int y;
-}               t_pixel;
-
-typedef struct  s_env
-{
-    void *mlx_ptr;
-    void *win_ptr;
-}               t_env;
 
 #include <stdio.h>
 
@@ -109,14 +97,37 @@ void draw_line(t_env *env, t_pixel a, t_pixel b)
 int fun(void *data)
 {
     t_env * env = (t_env *)data;
-    t_pixel p;
-    p.x = 50;
-    p.y = 50;
-    t_pixel p1;
-    p1.x = 100;
-    p1.y = 300;
+    int x;
+    int y;
+    t_coord p;
+    t_pixel *result;
 
-    draw_line(env, p, p1);
+    y = 0;
+    result = ft_memalloc(sizeof(t_pixel) * env->sizet);
+    printf("=================\n\n");
+    while (y < env->sizey)
+    {
+        x = 0;
+        while (x < env->sizex)
+        {
+            ft_memcpy(&p, &env->map[x + y * env->sizex], sizeof(t_coord));
+            printf("%f, %f, %f\n", p.x, p.y, p.z);
+            p.x *= 50;
+            p.y *= 50;
+            p.x += SCREEN_W * 0.5;
+            p.y += SCREEN_H * 0.5;
+            result[x + y * env->sizex].x = p.x;
+            result[x + y * env->sizex].y = p.y;
+            x++;
+        }
+        y++;
+    }
+    printf("=================\n\n");
+    for (int i = 0; i < (env->sizet - 1); i++)
+    {
+        draw_line(env, result[i], result[i + 1]);
+    }
+    free(result);
 
     return 0;
 }

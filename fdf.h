@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/12 09:23:53 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/15 10:57:32 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 # define ABS(X) (X < 0 ? -X : X)
 # define PIXEL mlx_pixel_put (mlx, win, right, down, 0x0ffffff)
+
+# define SCREEN_W 500
+# define SCREEN_H 500
+
 typedef struct	s_pixel
 {
 	int x;
