@@ -6,7 +6,7 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/07/15 09:30:59 by znazam           ###   ########.fr        #
+#    Updated: 2019/07/17 10:03:30 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ GNL:
 	gcc -c $(FLAGS) GNL/get_next_line.c -o GNL/get_next_line.o
 
 %.o: %.c $(HEADERS)
-	gcc -c $(FLAGS) -o $@ $<
+	gcc -g -c $(FLAGS) -o $@ $<
 
 clean:
 	rm -f $(OBJ)

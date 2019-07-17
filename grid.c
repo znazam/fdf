@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 15:43:20 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/17 10:47:54 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		grid(t_env *env, const char *filename)
 		}
 		env->sizey++;
 	}
+	ft_list_delete(&split);
 	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	t_list *cur;
 	cur = head;
@@ -54,7 +55,6 @@ int		grid(t_env *env, const char *filename)
 		j++;
 		cur = cur->next;
 	}
-	//ft_lstdel(head->content, split->content);
 	return(0);
 }
 
