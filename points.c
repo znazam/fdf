@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/17 15:58:08 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/19 14:22:31 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,41 @@ void draw_line(t_env *env, t_pixel a, t_pixel b)
     }
 }
 
+/* void draw_line(t_env *env, t_pixel a, t_pixel b)
+{
+    //double x;
+    //double y;
+    float i;
+    float dx;
+    float dy;
+
+    double gradient;
+
+    dx = b.x - a.x;
+    dy = b.y - a.y;
+
+    if (fabsf(dx) >= fabsf(dy))
+        gradient = fabsf(dx);
+    else
+        gradient = fabsf(dy);
+    dx = dx/gradient;
+    dy = dy/gradient;
+    //gradient = (double)dy / (double)dx;
+    //if (gradient > 1)
+           //draw_line_y(env, a, b);
+    //y = 0;
+    //x = 0;
+    i = 1;
+    while (i < gradient)
+    {
+        mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, 0xffffff);
+        a.x = a.x + dx;
+        a.y = a.y + dy;
+        i++;
+    }
+    mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, 0xffffff);
+}*/
+
 int fun(void *data)
 {
     t_env * env = (t_env *)data;
@@ -123,6 +158,10 @@ int fun(void *data)
     {
         draw_line(env, result[i], result[i + 1]);
     }
+    /*for (int i = 0; i < (env->sizet - 1) ; i++)
+    {
+        draw_line(env, result[i], result[i + env->sizex + 1]);
+    }*/
     free(result);
     return 0;
 }

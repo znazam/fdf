@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/15 10:57:32 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/19 13:43:59 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
 
 # define ABS(X) (X < 0 ? -X : X)
 # define PIXEL mlx_pixel_put (mlx, win, right, down, 0x0ffffff)

@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/18 08:36:31 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/19 14:18:07 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		grid(t_env *env, const char *filename)
 		env->sizey++;
 		//getchar();
 	}
+	printf("HERE\n");
 		//getchar();
 	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	t_list *cur;
