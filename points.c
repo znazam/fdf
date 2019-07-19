@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/17 10:51:55 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/17 15:58:08 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "fdf.h"
 #include <stdlib.h>
 # define ABS(X) (X < 0 ? -X : X) 
-
 #include <stdio.h>
 
 void draw_box(t_env *env, t_pixel a, t_pixel b)
@@ -104,14 +103,12 @@ int fun(void *data)
 
     y = 0;
     result = ft_memalloc(sizeof(t_pixel) * env->sizet);
-    printf("=================\n\n");
     while (y < env->sizey)
     {
         x = 0;
         while (x < env->sizex)
         {
             ft_memcpy(&p, &env->map[x + y * env->sizex], sizeof(t_coord));
-            printf("%f, %f, %f\n", p.x, p.y, p.z);
             p.x *= 50;
             p.y *= 50;
             p.x += SCREEN_W * 0.5;
@@ -122,13 +119,11 @@ int fun(void *data)
         }
         y++;
     }
-    printf("=================\n\n");
     for (int i = 0; i < (env->sizet - 1); i++)
     {
         draw_line(env, result[i], result[i + 1]);
     }
     free(result);
-
     return 0;
 }
 
