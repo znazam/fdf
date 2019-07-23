@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/23 09:29:11 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/23 11:13:39 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int fun(void *data)
     e.y = 500;
     draw_box(data, b, e);
     static float rotation = 0;
-    rotation += 0.5;
+    rotation += 0;
     float c = cos(rotation);
     float s = sin(rotation);
     t_env * env = (t_env *)data;
