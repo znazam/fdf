@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/22 08:43:44 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/24 09:25:26 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,5 @@ int		grid(t_env *env, const char *filename)
 		cur = cur->next;
 	}
 	ft_lstdel(&split, line_delete);
-	return(0);
-}
-
-int		fill()
-{
 	return(0);
 }
