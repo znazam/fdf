@@ -6,12 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 09:25:26 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/24 11:27:10 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <fcntl.h>
 
 void line_delete(void *content, size_t size)
 {
@@ -46,19 +45,15 @@ int		grid(t_env *env, const char *filename)
 		split = ft_lstnew(NULL, 0);
 		split->content = ft_strsplit(line, ' ');
 		ft_lstadd(&head, split);
-		printf("%p\n%p\n%p\n%p\n%zu\n", split, split->content, split->next, split->previous, split->content_size);
 		free(line);
 		env->sizex = 0;
-		//getchar();
 		while(((char**)split->content)[env->sizex])
 		{
 			env->sizex++;
 			env->sizet++;
 		}
 		env->sizey++;
-		//getchar();
 	}
-		//getchar();
 	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	t_list *cur;
 	cur = head;

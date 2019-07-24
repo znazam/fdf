@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 10:39:57 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 10:40:32 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/24 11:24:55 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	clear_image(t_mlx_image *img, int colour)
 **Initializes a new image
 */
 
-void	init_image(t_environment *env, t_mlx_image *img, int width, int height)
+void	init_image(t_env *env, t_mlx_image *img, int width, int height)
 {
 	img->img_ptr = mlx_new_image(env->mlx_ptr, width, height);
 	img->raw_data = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
@@ -70,7 +70,7 @@ void	init_image(t_environment *env, t_mlx_image *img, int width, int height)
 **Puts the image onto the window
 */
 
-void	put_image(t_environment *env, t_mlx_image *img)
+void	put_image(t_env *env, t_mlx_image *img)
 {
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, img->img_ptr,
 	img->pos.x, img->pos.y);

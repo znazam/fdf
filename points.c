@@ -6,47 +6,42 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 09:22:23 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/24 12:15:56 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "fdf.h"
-#include <stdlib.h>
-# define ABS(X) (X < 0 ? -X : X) 
-#include <stdio.h>
 
-void draw_box(t_env *env, t_pixel a, t_pixel b)
-{
-    int x;
-    int y;
+// void draw_box(t_env *env, t_pixel a, t_pixel b)
+// {
+//     int x;
+//     int y;
 
-    if (a.x > b.x)
-    {
-        int temp = a.x;
-        a.x = b.x;
-        b.x = temp;
-    }
-    if (a.y > b.y)
-    {
-        int temp = a.y;
-        a.y = b.y;
-        b.y = temp;
-    }
-    y = a.y;
-    while (y < b.y)
-    {
-        x = a.x;
-        while (x < b.x)
-        {
-            mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, 0x000000);
-            x++;
-        }
-        y++;
-    }
-}
+//     if (a.x > b.x)
+//     {
+//         int temp = a.x;
+//         a.x = b.x;
+//         b.x = temp;
+//     }
+//     if (a.y > b.y)
+//     {
+//         int temp = a.y;
+//         a.y = b.y;
+//         b.y = temp;
+//     }
+//     y = a.y;
+//     while (y < b.y)
+//     {
+//         x = a.x;
+//         while (x < b.x)
+//         {
+//             pixel_put_image(img, 0x000000, x, y);
+//             x++;
+//         }
+//         y++;
+//     }
+// }
 
-# define DR(N) (change < 0 ? (-N) : N)
 static void	draw_liney(t_env *env, t_pixel a, t_pixel b)
 {
 	double	change;
@@ -57,8 +52,7 @@ static void	draw_liney(t_env *env, t_pixel a, t_pixel b)
 	grad = (b.x - a.x) / change;
 	i = -1;
 	while (++i < (ABS(change)))
-		//put_pixel(a[0] + (DR(i)) * grad, a[1] + (DR(i)), c, img);
-        mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x + (DR(i)) * grad, a.y + (DR(i)), 0xFFFF00);
+        pixel_put_image(&env->img, 0xFFFF00, a.x + (DR(i)) * grad, a.y + (DR(i)));
 }
 
 void		draw_line(t_env *env, t_pixel a, t_pixel b)
@@ -77,7 +71,7 @@ void		draw_line(t_env *env, t_pixel a, t_pixel b)
 		grad = ychange / change;
 		i = -1;
 		while (++i < ABS(change))
-			mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x + DR(i), a.y + DR(i) * grad, 0xFF00FF);
+			pixel_put_image(&env->img, 0xFF00FF, a.x + DR(i), a.y + DR(i) * grad);
 	}
 }
 // void draw_line_y(t_env *env, t_pixel a, t_pixel b)
@@ -147,12 +141,13 @@ int fun(void *data)
     b.y = 0;
     e.x = 500;
     e.y = 500;
-    draw_box(data, b, e);
+    //draw_box(data, b, e);
     static float rotation = -0.9;
-    rotation += 0.3;
+    rotation += 0.1;
     float c = cos(rotation);
     float s = sin(rotation);
     t_env * env = (t_env *)data;
+    clear_image(&env->img, 0x000000);
     int x;
     int y;
     t_coord p;
@@ -170,8 +165,8 @@ int fun(void *data)
             tempy = p.z * s + p.y * c;
             p.z = p.z * c - p.y * s;
             p.y = tempy;
-            p.x *= 10;
-            p.y *= 10;
+            p.x *= 30;
+            p.y *= 30;
             p.x += SCREEN_W * 0.5;
             p.y += SCREEN_H * 0.5;
             result[x + y * env->sizex].x = p.x;
@@ -188,10 +183,7 @@ int fun(void *data)
          if (i < (env->sizet - env->sizex))
              draw_line(env, result[i], result[i + env->sizex]);
     }
-    /*for (int i = 0; i < (env->sizet - 1) ; i++)
-    {
-        draw_line(env, result[i], result[i + env->sizex + 1]);
-    }*/
+    put_image(env, &env->img);
     free(result);
     return 0;
 }

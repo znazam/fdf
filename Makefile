@@ -6,11 +6,11 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/07/17 11:41:36 by znazam           ###   ########.fr        #
+#    Updated: 2019/07/24 12:04:46 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c grid.c points.c
+SRC = main.c grid.c points.c images.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 

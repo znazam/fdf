@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 10:44:09 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/24 12:04:20 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <fcntl.h>
 
 # define ABS(X) (X < 0 ? -X : X)
 # define PIXEL mlx_pixel_put (mlx, win, right, down, 0x0ffffff)
+# define DR(N) (change < 0 ? (-N) : N)
 
-# define SCREEN_W 500
-# define SCREEN_H 500
+# define SCREEN_W 1000
+# define SCREEN_H 1000
 
 typedef struct	s_pixel
 {
@@ -39,18 +41,6 @@ typedef struct s_coord
 	float z;
 }				t_coord;
 
-typedef struct	s_env
-{
-	t_mlx_image	img;
-	void *mlx_ptr;
-	void *win_ptr;
-	t_coord *map;
-	int sizex;
-	int sizey;
-	int sizet;
-
-}				t_env;
-
 typedef struct	s_mlx_image
 {
 	void		*img_ptr;
@@ -60,11 +50,28 @@ typedef struct	s_mlx_image
 	char		*raw_data;
 	int			width;
 	int			height;
-	t_vector	pos;
+	t_pixel		pos;
 }				t_mlx_image;
+typedef struct	s_env
+{
+	t_mlx_image	img;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_coord		*map;
+	int			sizex;
+	int			sizey;
+	int			sizet;
 
-void draw_line_y(t_env *env, t_pixel a, t_pixel b);
-void draw_line(t_env *env, t_pixel a, t_pixel b);
+}				t_env;
+
+
+void	put_image(t_env *env, t_mlx_image *img);
+void	init_image(t_env *env, t_mlx_image *img, int width, int height);
+void	clear_image(t_mlx_image *img, int colour);
+void	pixel_put_image(t_mlx_image *img, int colour, int x, int y);
+void	line_delete(void *content, size_t size);
+void	draw_line_y(t_env *env, t_pixel a, t_pixel b);
+void	draw_line(t_env *env, t_pixel a, t_pixel b);
 int		grid(t_env *env, const char *filename);
 int		fun(void *data);
 int		exitfun(void *data);
