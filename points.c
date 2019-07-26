@@ -6,41 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 12:15:56 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/26 10:26:47 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-// void draw_box(t_env *env, t_pixel a, t_pixel b)
-// {
-//     int x;
-//     int y;
-
-//     if (a.x > b.x)
-//     {
-//         int temp = a.x;
-//         a.x = b.x;
-//         b.x = temp;
-//     }
-//     if (a.y > b.y)
-//     {
-//         int temp = a.y;
-//         a.y = b.y;
-//         b.y = temp;
-//     }
-//     y = a.y;
-//     while (y < b.y)
-//     {
-//         x = a.x;
-//         while (x < b.x)
-//         {
-//             pixel_put_image(img, 0x000000, x, y);
-//             x++;
-//         }
-//         y++;
-//     }
-// }
 
 static void	draw_liney(t_env *env, t_pixel a, t_pixel b)
 {
@@ -74,64 +44,6 @@ void		draw_line(t_env *env, t_pixel a, t_pixel b)
 			pixel_put_image(&env->img, 0xFF00FF, a.x + DR(i), a.y + DR(i) * grad);
 	}
 }
-// void draw_line_y(t_env *env, t_pixel a, t_pixel b)
-// {
-//     double x;
-//     double y;
-
-//     int dx;
-//     int dy;
-
-//     double gradient;
-
-//     dx = b.x - a.x;
-//     dy = b.y - a.y;
-
-//     if (dy < 0)
-//     {
-//         ft_swap(&a, &b, sizeof(t_pixel));
-//     }
-//     gradient = (double)dx / (double)dy;
-//     y = 0;
-//     x = 0;
-//     while (y < ABS(dy))
-//     {
-//         mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x + y * gradient, a.y + y, 0xffffff);
-//         y++;//y+=0.1;
-//     }
-// }
-
-// void draw_line(t_env *env, t_pixel a, t_pixel b)
-// {
-//     double x;
-//     double y;
-
-//     int dx;
-//     int dy;
-
-//     double gradient;
-
-//     dx = b.x - a.x;
-//     dy = b.y - a.y;
-
-//     if (dx < 0)
-//     {
-//         ft_swap(&a, &b, sizeof(t_pixel));
-//     }
-//     gradient = ABS((double)dy / (double)dx);
-//     if (gradient >= 1)
-//     {
-//         draw_line_y(env, a, b);
-//         return ;
-//     }
-//     y = 0;
-//     x = 0;
-//     while (x < ABS(dx))
-//     {
-//         mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x + x, a.y - x * gradient, 0x00ffff);
-//         x++;
-//     }
-// }
 
 int fun(void *data)
 {
@@ -139,11 +51,10 @@ int fun(void *data)
     t_pixel e;
     b.x = 0;
     b.y = 0;
-    e.x = 500;
-    e.y = 500;
-    //draw_box(data, b, e);
+    e.x = 1000;
+    e.y = 1000;
     static float rotation = -0.9;
-    rotation += 0.1;
+    rotation += 0.01;
     float c = cos(rotation);
     float s = sin(rotation);
     t_env * env = (t_env *)data;
@@ -185,12 +96,5 @@ int fun(void *data)
     }
     put_image(env, &env->img);
     free(result);
-    return 0;
-}
-
-int exitfun(void *data)
-{
-    (void)data;
-    exit(0);
     return 0;
 }

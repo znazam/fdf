@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 09:02:43 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 11:55:16 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/26 09:00:44 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	exitb(int button)
 	return (0);
 }
 
+int exitfun(void *data)
+{
+    (void)data;
+    exit(0);
+    return 0;
+}
 
 int main(int ac, char **av)
 {
@@ -29,9 +35,6 @@ int main(int ac, char **av)
 
     if (ac < 2)
       return (0);
-    
-    //(void) av;
-  
     init_image(&env, &env.img, SCREEN_W, SCREEN_H);
     grid(&env, av[1]);
     mlx_loop_hook(env.mlx_ptr, fun, &env);
