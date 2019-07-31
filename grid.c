@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/26 09:22:35 by znazam           ###   ########.fr       */
+/*   Updated: 2019/07/31 14:47:23 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int		grid(t_env *env, const char *filename)
 	env->sizet = 0;
 
 	fd = open(filename, O_RDONLY);
-	while(get_next_line(fd, &line))
+	printf("REACH!");
+	while (get_next_line(fd, &line) > 0)
 	{
 		split = ft_lstnew(NULL, 0);
 		split->content = ft_strsplit(line, ' ');
@@ -54,6 +55,7 @@ int		grid(t_env *env, const char *filename)
 		}
 		env->sizey++;
 	}
+	printf("REACH!");
 	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	t_list *cur;
 	cur = head;
