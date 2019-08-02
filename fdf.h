@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 12:04:20 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/02 08:14:23 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ typedef struct s_coord
 	float z;
 }				t_coord;
 
+typedef struct s_info
+{
+    int        x_size;
+    int        total_size;
+    int        y_size;
+    int        fd;
+    char    *line;
+    char    **inf;
+}                t_info;
+
 typedef struct	s_mlx_image
 {
 	void		*img_ptr;
@@ -61,6 +71,7 @@ typedef struct	s_env
 	int			sizex;
 	int			sizey;
 	int			sizet;
+	t_coord		*coord;
 
 }				t_env;
 
@@ -76,4 +87,5 @@ int		grid(t_env *env, const char *filename);
 int		fun(void *data);
 int		exitfun(void *data);
 int		exitb(int button);
+void	interpreter(const char *path, t_env *env);
 #endif
