@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/29 13:30:37 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 08:15:45 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int fun(void *data)
     t_pixel e;
     b.x = 0;
     b.y = 0;
-    e.x = 1000;
-    e.y = 1000;
+    e.x = 500;
+    e.y = 500;
     static float rotation = -0.9;
     rotation += 0.01;
     float c = cos(rotation);
@@ -86,9 +86,8 @@ int fun(void *data)
         }
         y++;
     }
-    
     for (int i = 0; i < (env->sizet - 1); i++)
-     {
+    {
          if (((i + 1) % env->sizex) != 0)
              draw_line(env, result[i], result[i + 1]);
          if (i < (env->sizet - env->sizex))
