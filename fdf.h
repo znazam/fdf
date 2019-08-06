@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 12:04:20 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 14:17:33 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,21 @@
 # define SCREEN_W 1000
 # define SCREEN_H 1000
 
+typedef struct	s_grid_data
+{
+	int		fd;
+	char	*line;
+	t_list	*split;
+	t_list	*head;
+}				t_grid_data;
+
 typedef struct	s_pixel
 {
 	int x;
 	int y;
 }				t_pixel;
 
-typedef struct s_coord
+typedef struct	s_coord
 {
 	float x;
 	float y;
@@ -52,6 +60,7 @@ typedef struct	s_mlx_image
 	int			height;
 	t_pixel		pos;
 }				t_mlx_image;
+
 typedef struct	s_env
 {
 	t_mlx_image	img;
@@ -64,16 +73,15 @@ typedef struct	s_env
 
 }				t_env;
 
-
-void	put_image(t_env *env, t_mlx_image *img);
-void	init_image(t_env *env, t_mlx_image *img, int width, int height);
-void	clear_image(t_mlx_image *img, int colour);
-void	pixel_put_image(t_mlx_image *img, int colour, int x, int y);
-void	line_delete(void *content, size_t size);
-void	draw_line_y(t_env *env, t_pixel a, t_pixel b);
-void	draw_line(t_env *env, t_pixel a, t_pixel b);
-int		grid(t_env *env, const char *filename);
-int		fun(void *data);
-int		exitfun(void *data);
-int		exitb(int button);
+void			put_image(t_env *env, t_mlx_image *img);
+void			init_image(t_env *env, t_mlx_image *img, int width, int height);
+void			clear_image(t_mlx_image *img, int colour);
+void			pixel_put_image(t_mlx_image *img, int colour, int x, int y);
+void			line_delete(void *content, size_t size);
+void			draw_line_y(t_env *env, t_pixel a, t_pixel b);
+void			draw_line(t_env *env, t_pixel a, t_pixel b);
+int				grid(t_env *env, const char *filename);
+int				fun(void *data);
+int				exitfun(void *data);
+int				exitb(int button);
 #endif

@@ -6,16 +6,16 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 09:19:42 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 14:16:43 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void line_delete(void *content, size_t size)
+void	line_delete(void *content, size_t size)
 {
-	size_t i;
-	char **lines;
+	size_t	i;
+	char	**lines;
 
 	(void)size;
 	lines = (char **)content;
@@ -28,40 +28,19 @@ void line_delete(void *content, size_t size)
 	free(lines);
 }
 
-int		grid(t_env *env, const char *filename)
+void	gline(t_env *env, t_list *head)
 {
-	int fd;
-	char *line;
-	t_list *split;
-	t_list *head;
-	
-	head = NULL;
-	env->sizey = 0;
-	env->sizet = 0;
+	int		i;
+	int		j;
+	t_list	*cur;
 
-	fd = open(filename, O_RDONLY);
-	while (get_next_line(fd, &line) > 0)
-	{
-		split = ft_lstnew(NULL, 0);
-		split->content = ft_strsplit(line, ' ');
-		ft_lstadd(&head, split);
-		free(line);
-		env->sizex = 0;
-		while(((char**)split->content)[env->sizex])
-		{
-			env->sizex++;
-			env->sizet++;
-		}
-		env->sizey++;
-	}
-	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
-	t_list *cur;
 	cur = head;
-	int j = 0;
+	j = 0;
+	env->map = ft_memalloc(sizeof(t_coord) * (env->sizet + 1));
 	while (cur)
 	{
-		int i = -1;
-		while(((char**)cur->content)[++i])
+		i = -1;
+		while (((char**)cur->content)[++i])
 		{
 			env->map[j * env->sizex + i].x = i - (env->sizex - 1) * 0.5;
 			env->map[j * env->sizex + i].y = j - (env->sizey - 1) * 0.5;
@@ -70,6 +49,31 @@ int		grid(t_env *env, const char *filename)
 		j++;
 		cur = cur->next;
 	}
-	ft_lstdel(&split, line_delete);
-	return(0);
+}
+
+int		grid(t_env *env, const char *filename)
+{
+	t_grid_data gd;
+
+	gd.head = NULL;
+	env->sizey = 0;
+	env->sizet = 0;
+	gd.fd = open(filename, O_RDONLY);
+	while (get_next_line(gd.fd, &gd.line) > 0)
+	{
+		gd.split = ft_lstnew(NULL, 0);
+		gd.split->content = ft_strsplit(gd.line, ' ');
+		ft_lstadd(&gd.head, gd.split);
+		free(gd.line);
+		env->sizex = 0;
+		while (((char**)gd.split->content)[env->sizex])
+		{
+			env->sizex++;
+			env->sizet++;
+		}
+		env->sizey++;
+	}
+	gline(env, gd.head);
+	ft_lstdel(&gd.split, line_delete);
+	return (0);
 }

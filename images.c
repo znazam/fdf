@@ -6,19 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 10:39:57 by znazam            #+#    #+#             */
-/*   Updated: 2019/07/24 11:24:55 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 10:58:33 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**This c file contains all neccessary functions pertaining to mlx images
-*/
-
 #include "fdf.h"
-
-/*
-**Places a pixel on the image at the given x & y coordinate
-*/
 
 void	pixel_put_image(t_mlx_image *img, int colour, int x, int y)
 {
@@ -31,10 +23,6 @@ void	pixel_put_image(t_mlx_image *img, int colour, int x, int y)
 	data = (int*)&img->raw_data[x * 4 + y * img->size_line];
 	*data = colour;
 }
-
-/*
-**Makes every pixel on the image the given colour
-*/
 
 void	clear_image(t_mlx_image *img, int colour)
 {
@@ -50,10 +38,6 @@ void	clear_image(t_mlx_image *img, int colour)
 	}
 }
 
-/*
-**Initializes a new image
-*/
-
 void	init_image(t_env *env, t_mlx_image *img, int width, int height)
 {
 	img->img_ptr = mlx_new_image(env->mlx_ptr, width, height);
@@ -65,10 +49,6 @@ void	init_image(t_env *env, t_mlx_image *img, int width, int height)
 	img->pos.y = 0;
 	clear_image(img, 0x000000);
 }
-
-/*
-**Puts the image onto the window
-*/
 
 void	put_image(t_env *env, t_mlx_image *img)
 {
