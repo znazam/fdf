@@ -6,11 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 14:16:43 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 16:22:33 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	line_delete(void *content, size_t size)
 {

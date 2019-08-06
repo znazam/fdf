@@ -6,11 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 10:39:57 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 10:58:33 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 16:23:09 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	pixel_put_image(t_mlx_image *img, int colour, int x, int y)
 {

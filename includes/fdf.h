@@ -6,15 +6,15 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 14:17:33 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 16:19:54 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "libft/libft.h"
-# include "GNL/get_next_line.h"
+# include "../libft/libft.h"
+# include "../GNL/get_next_line.h"
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>

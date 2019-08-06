@@ -6,11 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 14:46:06 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 16:23:21 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 static void	draw_liney(t_env *env, t_pixel a, t_pixel b)
 {

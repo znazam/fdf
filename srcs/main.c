@@ -6,11 +6,11 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 09:02:43 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 10:56:21 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/06 16:23:03 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	exitb(int button)
 {
