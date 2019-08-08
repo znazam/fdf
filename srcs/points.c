@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/07 13:38:18 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/08 14:45:33 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,16 @@ void		rotation(t_coord *p)
 	tempy = p->z * s + p->y * c;
 	p->z = p->z * c - p->y * s;
 	p->y = tempy;
-}
-
-void		positions(t_coord *p)
-{
-		p->x *= 30;
-		p->y *= 30;
-		p->x += SCREEN_W * 0.5;
-		p->y += SCREEN_H * 0.5;
-	
+	p->x *= 30;
+	p->y *= 30;
+	p->x += SCREEN_W * 0.5;
+	p->y += SCREEN_H * 0.5;
 }
 
 int			fun(void *data)
 {
 	t_points_data pd;
-	
+
 	pd.env = (t_env *)data;
 	pd.y = 0;
 	clear_image(&pd.env->img, 0x000000);
@@ -99,9 +94,9 @@ int			fun(void *data)
 		pd.x = 0;
 		while (pd.x < pd.env->sizex)
 		{
-			ft_memcpy(&pd.p, &pd.env->map[pd.x + pd.y * pd.env->sizex], sizeof(t_coord));
+			ft_memcpy(&pd.p, &pd.env->map[pd.x + pd.y * pd.env->sizex],
+			sizeof(t_coord));
 			rotation(&pd.p);
-			positions(&pd.p);
 			pd.result[pd.x + pd.y * pd.env->sizex].x = pd.p.x;
 			pd.result[pd.x + pd.y * pd.env->sizex].y = pd.p.y;
 			pd.x++;
