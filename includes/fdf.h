@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 16:19:54 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/07 13:36:14 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,14 @@
 # define ABS(X) (X < 0 ? -X : X)
 # define PIXEL mlx_pixel_put (mlx, win, right, down, 0x0ffffff)
 # define DR(N) (change < 0 ? (-N) : N)
-
 # define SCREEN_W 1000
 # define SCREEN_H 1000
-
-typedef struct	s_grid_data
-{
-	int		fd;
-	char	*line;
-	t_list	*split;
-	t_list	*head;
-}				t_grid_data;
 
 typedef struct	s_pixel
 {
 	int x;
 	int y;
 }				t_pixel;
-
-typedef struct	s_coord
-{
-	float x;
-	float y;
-	float z;
-}				t_coord;
 
 typedef struct	s_mlx_image
 {
@@ -61,6 +45,13 @@ typedef struct	s_mlx_image
 	t_pixel		pos;
 }				t_mlx_image;
 
+typedef struct	s_coord
+{
+	float x;
+	float y;
+	float z;
+}				t_coord;
+
 typedef struct	s_env
 {
 	t_mlx_image	img;
@@ -70,8 +61,24 @@ typedef struct	s_env
 	int			sizex;
 	int			sizey;
 	int			sizet;
-
 }				t_env;
+
+typedef struct	s_points_data
+{
+	t_env	*env;
+	int		x;
+	int		y;
+	t_coord	p;
+	t_pixel	*result;
+}				t_points_data;
+
+typedef struct	s_grid_data
+{
+	int		fd;
+	char	*line;
+	t_list	*split;
+	t_list	*head;
+}				t_grid_data;
 
 void			put_image(t_env *env, t_mlx_image *img);
 void			init_image(t_env *env, t_mlx_image *img, int width, int height);

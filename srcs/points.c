@@ -6,13 +6,13 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 08:30:38 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/06 16:23:21 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/07 13:38:18 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	draw_liney(t_env *env, t_pixel a, t_pixel b)
+void		draw_liney(t_env *env, t_pixel a, t_pixel b)
 {
 	double	change;
 	double	grad;
@@ -71,43 +71,45 @@ void		rotation(t_coord *p)
 
 	c = cos(rotation);
 	s = sin(rotation);
-	rotation += 0.0001;
+	rotation += 0.00001;
 	tempy = p->z * s + p->y * c;
 	p->z = p->z * c - p->y * s;
 	p->y = tempy;
 }
 
+void		positions(t_coord *p)
+{
+		p->x *= 30;
+		p->y *= 30;
+		p->x += SCREEN_W * 0.5;
+		p->y += SCREEN_H * 0.5;
+	
+}
+
 int			fun(void *data)
 {
-	t_env	*env;
-	int		x;
-	int		y;
-	t_coord	p;
-	t_pixel	*result;
-
-	env = (t_env *)data;
-	y = 0;
-	clear_image(&env->img, 0x000000);
-	result = ft_memalloc(sizeof(t_pixel) * env->sizet);
-	while (y < env->sizey)
+	t_points_data pd;
+	
+	pd.env = (t_env *)data;
+	pd.y = 0;
+	clear_image(&pd.env->img, 0x000000);
+	pd.result = ft_memalloc(sizeof(t_pixel) * pd.env->sizet);
+	while (pd.y < pd.env->sizey)
 	{
-		x = 0;
-		while (x < env->sizex)
+		pd.x = 0;
+		while (pd.x < pd.env->sizex)
 		{
-			ft_memcpy(&p, &env->map[x + y * env->sizex], sizeof(t_coord));
-			rotation(&p);
-			p.x *= 30;
-			p.y *= 30;
-			p.x += SCREEN_W * 0.5;
-			p.y += SCREEN_H * 0.5;
-			result[x + y * env->sizex].x = p.x;
-			result[x + y * env->sizex].y = p.y;
-			x++;
+			ft_memcpy(&pd.p, &pd.env->map[pd.x + pd.y * pd.env->sizex], sizeof(t_coord));
+			rotation(&pd.p);
+			positions(&pd.p);
+			pd.result[pd.x + pd.y * pd.env->sizex].x = pd.p.x;
+			pd.result[pd.x + pd.y * pd.env->sizex].y = pd.p.y;
+			pd.x++;
 		}
-		y++;
+		pd.y++;
 	}
-	draw_faces(env, result);
-	put_image(env, &env->img);
-	free(result);
+	draw_faces(pd.env, pd.result);
+	put_image(pd.env, &pd.env->img);
+	free(pd.result);
 	return (0);
 }

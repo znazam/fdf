@@ -6,11 +6,15 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/08/06 16:18:31 by znazam           ###   ########.fr        #
+#    Updated: 2019/08/07 09:21:11 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/main.c src/grid.c src/points.c src/images.c
+SRC_PATH = ./srcs/
+
+SRC_NAME = main.c grid.c points.c images.c
+
+SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
@@ -35,7 +39,7 @@ GNL:
 	git submodule update GNL
 	gcc -c $(FLAGS) GNL/get_next_line.c -o GNL/get_next_line.o
 
-%.o: %.c $(HEADERS)
+$(SRC_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	gcc -g -c $(FLAGS) -o $@ $<
 
 clean:
