@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/07 13:36:14 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/15 14:26:26 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "../libft/libft.h"
+# include "../libvec/includes/libvec.h"
 # include "../GNL/get_next_line.h"
 # include <mlx.h>
 # include <stdlib.h>
