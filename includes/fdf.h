@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 08:54:21 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/15 14:26:26 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/19 15:47:35 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ int				grid(t_env *env, const char *filename);
 int				fun(void *data);
 int				exitfun(void *data);
 int				exitb(int button);
+void			error_check(int error);
 #endif

@@ -6,13 +6,13 @@
 #    By: znazam <znazam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 10:44:14 by znazam            #+#    #+#              #
-#    Updated: 2019/08/07 09:21:11 by znazam           ###   ########.fr        #
+#    Updated: 2019/08/19 15:49:35 by znazam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_PATH = ./srcs/
 
-SRC_NAME = main.c grid.c points.c images.c
+SRC_NAME = main.c grid.c points.c images.c error.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
