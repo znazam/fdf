@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 07:37:40 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/19 16:26:13 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/20 09:10:45 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,19 @@ int		grid(t_env *env, const char *filename)
 	env->sizey = 0;
 	env->sizet = 0;
 	gd.fd = open(filename, O_RDONLY);
-	if (gd.fd == -1)
-		error_check(0);
-	else
+	while (get_next_line(gd.fd, &gd.line) > 0)
 	{
-		while (get_next_line(gd.fd, &gd.line) > 0)
+		gd.split = ft_lstnew(NULL, 0);
+		gd.split->content = ft_strsplit(gd.line, ' ');
+		ft_lstadd(&gd.head, gd.split);
+		free(gd.line);
+		env->sizex = 0;
+		while (((char**)gd.split->content)[env->sizex])
 		{
-			gd.split = ft_lstnew(NULL, 0);
-			gd.split->content = ft_strsplit(gd.line, ' ');
-			ft_lstadd(&gd.head, gd.split);
-			free(gd.line);
-			env->sizex = 0;
-			while (((char**)gd.split->content)[env->sizex])
-			{
-				env->sizex++;
-				env->sizet++;
-			}
-			env->sizey++;
+			env->sizex++;
+			env->sizet++;
 		}
+		env->sizey++;
 	}
 	gline(env, gd.head);
 	ft_lstdel(&gd.split, line_delete);

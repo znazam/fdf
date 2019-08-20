@@ -6,7 +6,7 @@
 /*   By: znazam <znazam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 16:25:29 by znazam            #+#    #+#             */
-/*   Updated: 2019/08/19 16:25:30 by znazam           ###   ########.fr       */
+/*   Updated: 2019/08/20 09:12:17 by znazam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_check(int error)
 	}
 	if (error == 2)
 	{
-		ft_putendl("didn't select file.");
+		ft_putendl("didn't select one file.");
 		exit(0);
 	}
 }
